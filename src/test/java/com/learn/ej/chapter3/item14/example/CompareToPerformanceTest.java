@@ -1,4 +1,4 @@
-package com.example.examplesource.ej.item14;
+package com.learn.ej.chapter3.item14.example;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StopWatch;
 
-class CompareToTest {
+class CompareToPerformanceTest {
 
     private List<PhoneNumber> phoneNumbers = new ArrayList<>();
 
@@ -26,7 +26,7 @@ class CompareToTest {
     }
 
     @Test
-    void compareToSpeedTest() {
+    void compareToPerformanceTest() {
         ArrayList<PhoneNumber> dumpPhoneNumbers = new ArrayList<>(phoneNumbers);
 
         StopWatch stopWatch = new StopWatch();
@@ -45,3 +45,4 @@ class CompareToTest {
 
     }
 }
+

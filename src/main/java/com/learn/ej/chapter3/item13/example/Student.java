@@ -1,4 +1,4 @@
-package com.example.examplesource.ej.item13;
+package com.learn.ej.chapter3.item13.example;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
