@@ -24,11 +24,11 @@
 ```java
 public class People implements Singer, SongWriter {
     @Override
-    public void Sing(String s) {
+    public void sing(String s) {
 
     }
     @Override
-    public void Compose(int chartPosition) {
+    public void compose(int chartPosition) {
 
     }
 }
@@ -59,7 +59,21 @@ public abstract class SingerSongWriter {
 ```
 
 ###래퍼 클래스 관용구와 함께 사용하면 기능을 향상시키는 안전하고 강력한 수단이 된다
-- 사용경험이 있으신가요??
+```java
+public class SingTeacher implements Singer {
+    
+    private final People people;
+    
+    @Override
+    public void Sing(String s) {
+        this.people.sing(s);
+    }
+    @Override
+    public void Compose(int chartPosition) {
+        this.people.compose(chartPosition);
+    }
+}
+```
 
 ###템플릿 메서드 패턴
 - 인터페이스로 타입 정의, 디폴트 메서드 정의
