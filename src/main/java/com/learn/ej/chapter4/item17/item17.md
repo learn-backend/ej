@@ -11,7 +11,7 @@
 2. 클래스를 확장할 수 없도록 한다 (상속을 막는다)
    - 클래스를 final로 선언
    - 모든 생성자를 private or package-private으로 만들고 public 정적 팩토리 제공
-   - 두번째 방법이 더 유연함 (ex. Boolean 캐싱)
+   - 두번째 방법이 더 유연함 (객체 캐싱 기능 등)
 3. 모든 필드를 final로 선언한다
    - 인스턴스에 대한 동기화 처리 없이 다른 스레드에서 문제없이 처리
 4. 모든 필드를 private으로 선언한다
@@ -23,15 +23,15 @@
 
 ```java
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE, staticName="of")
+@AllArgsConstructor(access = AccessLevel.PRIVATE, staticName = "of")
 public class Person {
-    private final String name;
-    private final String gender;
-    private final MBTI mbti;
-    
-    public getMbti() {
-        return new MBTI.of(this.mbti);
-    }
+   private final String name;
+   private final String gender;
+   private final MBTI mbti;
+
+   public getMbti() {
+      return new MBTI.of(this.mbti);
+   }
 }
 ```
  
@@ -49,7 +49,7 @@ public class Person {
     - 복사해봐야 똑같은 것이므로 복사 필요 없다
       - 안티패턴 : String 복사 생성자 
 -  불변 객체는 자유롭게 내부 데이터를 공유가능
-    - 예시 만들기
+    - 예시) BigInteger.negate : 값 배열이 가변이지만 BigInteger 객체가 불변이므로 배열을 공유, 부호만 바꿔서 생성
 -  객체를 만들 때 구성요소로 사용하기 좋음
     - 맵의 키
     - 집합의 원소

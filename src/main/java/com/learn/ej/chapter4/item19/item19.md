@@ -4,7 +4,8 @@
 - 공개된 메서드가 자신의 다른 메서드를 호출하는데 그 메서드가 재정의가 가능한 경우
     - 예시) 18장의 addAll메서드
 - 클래스의 내부 동작 과정 중간에 끼어들 수 있는 훅을 잘 선별하여 protected 메서드 형태로 공개
-#    - 예시) AbstractList의 removeRange 메서드
+    - 예시) AbstractList의 removeRange 메서드
+    - clear 메소드 실행할 때 효율성을 높이기 위해 존재 즉, 외부에서 사용하는 메서드가 아님
 
 ###@implSpec 태그
 - 자기사용패턴

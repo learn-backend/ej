@@ -160,6 +160,56 @@ public class ForwardingAnimal {
 - 콜백 프레임워크와 어울리지 않는다
 - 자신의 참조를 다른 객체에 넘겨서 다음 호출(콜백)때 사용하도록 한 콜백 프래임워크에서 내부 객체는 자신을 감싸고 있는 래퍼의 존재를 모르니 
   자신의 참조를 넘기고, 콜백 때는 래퍼가 아닌 내부 객체를 호출하게 되기 때문
+  
+```java
+public class PersonWrapper {
+    private final Person person;
+    
+    public PersonWrapper(Person person) {
+        this.person = person;
+    }
+    
+    public void greet() {
+        System.out.println("hello person wrapper");
+    }
+}
+
+public class Person {
+    private final Service service;
+    
+    public Person(Service service) {
+        this.service = service;
+        service.register(this);
+    }
+    
+    public void greet() {
+        System.out.println("hello person");
+    }
+}
+
+public class Service {
+    private final Person person;
+    
+    public Service() {}
+    
+    public void register(Person person) {
+        this.person = person;
+    }
+    
+    public void greet() {
+        person.greet();
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Service service = new Service();
+        Person person = new Person(service);
+        PersonWrapper personWrapper = new PersonWrapper(person);
+        service.greet();
+    }
+}
+```
 
 ###상속을 사용할 경우 확인해야 할 것
 - is-a 관계인지
