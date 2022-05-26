@@ -81,49 +81,41 @@ public class SingTeacher implements Singer {
 
 ```java
 // 인터페이스
-public interface Vending {
-    void start();
-    void chooseProduct();
-    void stop();
-    void process();
+public interface Phone {
+    void sendMessage();
+    void chooseReceiver();
+    void typeMessage();
 }
 
 // 추상골격 구현 클래스
-public abstract class AbstractVending implements Vending {
+public abstract class AbstractPhone implements Phone {
     @Override
-    public void start() {
-        System.out.println("vending start");
+    public void sendMessage() {
+        chooseReceiver();
+        typeMessage();
     }
-
+    
     @Override
-    public void stop() {
-        System.out.println("stop vending");
-    }
-
-    @Override
-    public void process() {
-        start();
-        chooseProduct();
-        stop();
+    public void typeMessage() {
+        System.out.println("hello");
     }
 }
 
 // 추상골격 구현으로 중복이 제거됨
-public class BaverageVending extends AbstractVending implements Vending {
+public class CompanyPhone extends AbstractPhone implements Phone {
     @Override
-    public void chooseProduct() {
-        System.out.println("choose menu");
-        System.out.println("coke");
-        System.out.println("energy drink");
+    public void chooseReceiver() {
+        System.out.println("boss");
+        System.out.println("colleague");
     }
 }
 
-public class CoffeeVending extends AbstractVending implements Vending {
+public class PersonalPhone extends AbstractPhone implements Phone {
     @Override
-    public void chooseProduct() {
-        System.out.println("choose menu");
-        System.out.println("americano");
-        System.out.println("cafe latte");
+    public void chooseReceiver() {
+        System.out.println("friend");
+        System.out.println("mom");
+        System.out.println("dad");
     }
 }
 ```
@@ -133,45 +125,39 @@ public class CoffeeVending extends AbstractVending implements Vending {
   각 메소드 호출을 내부 클래스의 인스턴스에 전달하여 골격 구현 클래스를 우회적으로 이용하는 방식
 
 ```java
-// Vending을 구현하는 구현 클래스가 VendingManuFacturer 라는 제조사 클래스를 상속받아야해서 
+// Phone 구현하는 구현 클래스가 PhoneCountry 라는 제조사 클래스를 상속받아야해서 
 // 추상 골격 구현을 확장하지 못하는 상황
-public class VendingManufacturer {
-    public void printManufacturerName() {
-        System.out.println("Made By JavaBom");
+public class PhoneCountry {
+    public void selectLanguage() {
+        System.out.println("Korean");
+        System.out.println("English");
     }
 }
 
-public class SnackVending extends VendingManufacturer implements Vending {
-    InnerAbstractVending innerAbstractVending = new InnerAbstractVending();
-
-    @Override
-    public void start() {
-        innerAbstractVending.start();
-    }
+public class CouplePhone extends PhoneCountry implements Phone {
+    InnerAbstractPhone innerAbstractPhone = new InnerAbstractPhone();
 
     @Override
     public void chooseProduct() {
-        innerAbstractVending.chooseProduct();
+        innerAbstractPhone.chooseProduct();
+    }
+    
+    @Override
+    public void typeMessage() {
+        innerAbstractPhone.typeMessage();
     }
 
     @Override
-    public void stop() {
-        innerAbstractVending.stop();
+    public void sendMessage() {
+        selectLanguage();
+        innerAbstractPhone.sendMessage();
     }
 
-    @Override
-    public void process() {
-        printManufacturerName();
-        innerAbstractVending.process();
-    }
-
-    private class InnerAbstractVending extends AbstractVending {
-
+    private class InnerAbstractPhone extends AbstractPhone {
         @Override
-        public void chooseProduct() {
-            System.out.println("choose product");
-            System.out.println("chocolate");
-            System.out.println("cracker");
+        public void chooseReceiver() {
+            System.out.println("girl friend");
+            System.out.println("boy friend");
         }
     }
 }
