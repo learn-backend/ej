@@ -4,6 +4,7 @@
 - 그 결과 varargs 매개변수에 제네릭이나 매개변수화 타입이 포함되면 컴파일 경고가 발생
 - 실제화 불가 타입은 런타임에는 컴파일타임보다 타입관련 정보를 적게 담고 있는 것이 원인
 ```java
+// 이와 같은 상황이 벌어질 수 있다
 static void dangerous(List<String>... stringLists) {
     List<Integer> intList = List.of(1,2,3);
     Object[] objects = stringLists;
@@ -43,12 +44,13 @@ public static void main(String[] args) {
 
 ```java
 // 실제로는 아래와 같은 형변환이 일어남
+// toArray()는 컴파일 타임에 컴파일러에게 타입 정보가 부족해서 어떤 타입의 객체를 넘기더라도 담을 수 잇는 가장 구체적인 타입인 Object[]를 반환
 // Object[]는 String[]의 하위타입이 아니므로 형변환할 수 없음
 String[] attributes = (String[]) pickTwo("좋은", "빠른", "저렴한");
 ```
 - 예외 
     - @SafeVarargs로 선언된 타입 안전성이 보장된 또 다른 varargs 메서드에 넘기는 것은 안전
-    - 배열 내용의 일부 함수를 호출만 하는 (varargs를 받지않는) 일반 메서드에 넘기는 것도 안전????
+    - 배열 내용의 일부 함수를 호출만 하는 (varargs를 받지않는) 일반 메서드에 넘기는 것도 안전(?)
     
 
 ### 제네릭 가변인수 매개변수를 안전하게 사용하는 메서드

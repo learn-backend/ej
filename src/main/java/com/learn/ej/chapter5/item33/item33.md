@@ -26,8 +26,8 @@ public class Favorite {
 }
 ```
 - 각 타입의 Class 객체를 매개변수화한 키 역할로 사용
-- class의 리터럴 타입은 Class가 아닌 Class<T>
-    - String.class의 리터럴 타입은 Class<String>
+- class의 리터럴 타입은 Class가 아닌 `Class<T>`
+    - String.class의 리터럴 타입은 `Class<String>`
 - 맵이 아니라 키가 와일드카드 타입이다
     - 맵 안에 아무것도 넣을 수 없는 것이 아니라
     - 모든 키가 서로 다른 매개변수화 타입일 수 있다는 뜻
@@ -47,8 +47,8 @@ public class Favorite {
         - 클라이언트 코드에서 컴파일할 때 비검사 경고가 뜰 것
         - Favorites가 타입 불변식을 어기는 일이 없도록 보장하려면 putFavorite 메서드와 같이 instance의 타입이 type으로 명시한 타입과 같은지 확인
     2. 실체화 불가 타입에는 사용할 수 없다
-        - String이나 String[]은 저장할 수 있어도 즐겨 찾는 List<String>은 저장할 수 없다
-        - List<String>과 List<Integer>는 List.class라는 객체를 공유하기 때문
+        - String이나 String[]은 저장할 수 있어도 즐겨 찾는 `List<String>`은 저장할 수 없다
+        - `List<String>`과 `List<Integer>`는 List.class라는 객체를 공유하기 때문
         - 한정적 타입 토큰을 활용하면 가능
         ```java
         public <T extends Annotation> T getAnnotation(Class<T> annotationType);

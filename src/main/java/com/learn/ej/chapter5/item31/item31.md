@@ -1,7 +1,7 @@
 # 한정적 와일드카드를 사용해 API 유연성을 높이라
 
 ### 불공변 방식
-List<String>은 List<Object>가 하는 일을 제대로 수행하지 못하므로 하위타입이 될 수 없다 (리스코프 치환 원칙)
+`List<String>`은 `List<Object>`가 하는 일을 제대로 수행하지 못하므로 하위타입이 될 수 없다 (리스코프 치환 원칙)
 
 불공변 방식보다 더 유연한 방식이 필요할 수 있다
 
@@ -22,7 +22,7 @@ public class Stack{
     }
 
     // 한정적 와일드 카드 타입 적용
-    public void pushAll(Iterable<?extends E> src){
+    public void pushAll(Iterable<? extends E> src){
         for(E e : src){
             push(e);
         }
@@ -44,7 +44,7 @@ Iterable<Integer> integers = List.of(1,2,3,4,5);
 numberStack.pushAll(intergers);
 
 Stack<Number> numberStack = new Stack<>();
-Collection<Object> objects = List.of(1, "String");
+Collection<Object> objects = List.of("String", 1.0, 0);
 numberStack.popAll(objects);
 ```
 - PECS
