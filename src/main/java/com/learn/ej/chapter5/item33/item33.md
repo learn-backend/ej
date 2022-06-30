@@ -43,9 +43,10 @@ public class Favorite {
 
 
 - 제약사항
-    1. 클라이언트가 Class객체를 로타입으로 넘기면 타입 안전성이 쌔진다
+    1. 클라이언트가 Class객체를 로타입으로 넘기면 타입 안전성이 깨진다
         - 클라이언트 코드에서 컴파일할 때 비검사 경고가 뜰 것
         - Favorites가 타입 불변식을 어기는 일이 없도록 보장하려면 putFavorite 메서드와 같이 instance의 타입이 type으로 명시한 타입과 같은지 확인
+            - `type.cast(instance)`과 같이 동적 형병환 적용
     2. 실체화 불가 타입에는 사용할 수 없다
         - String이나 String[]은 저장할 수 있어도 즐겨 찾는 `List<String>`은 저장할 수 없다
         - `List<String>`과 `List<Integer>`는 List.class라는 객체를 공유하기 때문

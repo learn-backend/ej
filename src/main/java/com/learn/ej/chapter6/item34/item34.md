@@ -33,7 +33,7 @@ public enum Orange {NAVEL, TEMPLE, BLOOD}
 
 
 2. 타입 안전성
-    - APPLE_FUJI와 ORANGE_NAVEL은 비교할 수 없다 (APPLE_FUJI==ORANGE_NAVEL 에러가 발생한다)
+    - APPLE_FUJI와 ORANGE_NAVEL은 비교할 수 없다 (APPLE.FUJI==ORANGE.NAVEL 에러가 발생한다)
     
 
 3. 각자의 이름공간(네임스페이스)이 있다
