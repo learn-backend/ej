@@ -48,7 +48,7 @@ public static void main(String[] args) {
 // Object[]는 String[]의 하위타입이 아니므로 형변환할 수 없음
 String[] attributes = (String[]) pickTwo("좋은", "빠른", "저렴한");
 ```
-- 예외 
+- 예외 : 메서드 호출자에게 순수하게 매개변수 배열의 element만 전달하는 경우
     - @SafeVarargs로 선언된 타입 안전성이 보장된 또 다른 varargs 메서드에 넘기는 것은 안전
     - 배열 내용의 일부 함수를 호출만 하는 (varargs를 받지않는) 일반 메서드에 넘기는 것도 안전(?)
     
