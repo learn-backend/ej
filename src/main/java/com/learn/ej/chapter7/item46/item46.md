@@ -7,7 +7,7 @@
 - 다른 가변 상태 참조하지 않고 함수 스스로도 다른 상태 변경하지 않아야 함
 
 ### 패러다임을 깨는 예시
-- forEach에서 와부 상태(freq)를 수정함
+- forEach에서 외부 상태(freq)를 수정함
 ```java
 Map<String, Long> freq = new HashMap<>();
 try(Stream<String> words = new Scanner(file).tokens())
