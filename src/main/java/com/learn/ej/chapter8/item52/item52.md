@@ -66,7 +66,7 @@ ExecutorService exec = Executors.newCachedThreadPool();
 exec.submit(System.out::println); //컴파일 에러
 ```
 - 인수가 똑같고 양쪽모두 Runnable를 받는 형제 메서드를 다중 정의하고 있다.
-- 원인은 submit 다중 정의 메서드 중에는 Callabe<T>를 받논 메서드도 있다는데 있다.
+- 원인은 submit 다중 정의 메서드 중에는 `Callable<T>` 를 받논 메서드도 있다는데 있다.
 - 다중 정의 해소 알고리즘은 우리의 기대처럼 동작하지 않는다.
 - 따라서 메서드를 다중정의할때, 서로 다른 함수형 인터페이스라도 같은 위치의 인수로 받아서는 안된다.
   - -Xlint:overloads를 지정하면 이런 종류의 다중 정의를 경고해줄수 있다.
