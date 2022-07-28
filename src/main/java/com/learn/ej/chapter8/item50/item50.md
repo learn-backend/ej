@@ -7,8 +7,10 @@
 ```java
 // 기간을 표현하는 클래스
 public final class Period {
-    private final Date start;
+    private final Date start; 
     private final Date end;
+   //Date는 불변 객체가 아니다.
+   // jdk 1.8부터 지원하는 LocalDateTime, Instant 와 같은 불변객체를 쓰자.
 
     /**
      * @param  start 시작 시각
